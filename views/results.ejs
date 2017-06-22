@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>resultados</title>
+  </head>
+  <body>
+    <style media="screen">
+      div.main{
+        margin-left: 5rem;
+        margin-top: 2rem;
+      }
+      div.warning{
+        elevation : 45deg;
+        background: red;
+        color : white;
+        width: 15rem;
+      }
+      div.trafic{
+        elevation : 45deg;
+        background: yellow;
+        width: 15rem;
+      }
+    </style>
+    <div class="main">
+      <%var t = JSON.parse(trafic)
+        var c = JSON.parse(control)%>
+
+
+      <%if(c.length > 0){%>
+        <div class="warning">
+          <h3>Control policial</h3>
+        </div>
+        En las intersecciones :<br><br>
+      <%}%>
+
+      <%for(var i in c){%>
+        <span><%=c[i].mainStreet%> y <%=c[i].secondStreet%></span><br>
+      <%}%>
+      <br>
+      <%if(t.length > 0){%>
+        <div class="warning">
+          <h3>Hay trafico</h3>
+        </div>
+        En las intersecciones :<br><br>
+      <%}%>
+      <%for(var i in t){%>
+        <span><%=t[i].mainStreet%> y <%=t[i].secondStreet%></span><br>
+      <%}%>
+      <br>
+
+      <%if(t.length == 0 && c.length==0){%>
+          <h3>No hay registros</h3>
+      <%}%>
+
+      <div class="">
+        <h4> En la calle <%=street%></h4>
+      </div>
+    </div>
+  </body>
+</html>
